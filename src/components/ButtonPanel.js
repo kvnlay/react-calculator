@@ -9,7 +9,7 @@ function ButtonPanel() {
         <Button name="AC" />
         <Button name="+/-" />
         <Button name="%" />
-        <Button name="+" color="orange" />
+        <Button name="÷" color="orange" />
       </div>
       <div className="row">
         <Button name="7" />
