@@ -1,41 +1,60 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Button from './Button';
 import '../App.css';
 
-function ButtonPanel() {
+function ButtonPanel({ clickHandler }) {
+  const allProps = (buttonName, color, width) => {
+    // eslint-disable-next-line no-shadow
+    const handleClick = (buttonName) => {
+      clickHandler(buttonName);
+    };
+    const props = {
+      clickHandler: handleClick,
+      name: buttonName,
+      color,
+      width,
+    };
+    return props;
+  };
+
   return (
     <div>
       <div className="row">
-        <Button name="AC" />
-        <Button name="+/-" />
-        <Button name="%" />
-        <Button name="÷" color="orange" />
+        <Button {...allProps('AC')} />
+        <Button {...allProps('+/-')} />
+        <Button {...allProps('%')} />
+        <Button {...allProps('÷', 'orange')} />
       </div>
       <div className="row">
-        <Button name="7" />
-        <Button name="8" />
-        <Button name="9" />
-        <Button name="X" color="orange" />
+        <Button {...allProps('7')} />
+        <Button {...allProps('8')} />
+        <Button {...allProps('9')} />
+        <Button {...allProps('X', 'orange')} />
       </div>
       <div className="row">
-        <Button name="4" />
-        <Button name="5" />
-        <Button name="6" />
-        <Button name="-" color="orange" />
+        <Button {...allProps('4')} />
+        <Button {...allProps('5')} />
+        <Button {...allProps('6')} />
+        <Button {...allProps('-', 'orange')} />
       </div>
       <div className="row">
-        <Button name="1" />
-        <Button name="2" />
-        <Button name="3" />
-        <Button name="+" color="orange" />
+        <Button {...allProps('1')} />
+        <Button {...allProps('2')} />
+        <Button {...allProps('3')} />
+        <Button {...allProps('+', 'orange')} />
       </div>
       <div className="row">
-        <Button name="0" width />
-        <Button name="." />
-        <Button name="=" color="orange" />
+        <Button {...allProps('0', undefined, true)} />
+        <Button {...allProps('.')} />
+        <Button {...allProps('=', 'orange')} />
       </div>
     </div>
   );
 }
+
+ButtonPanel.propTypes = {
+  clickHandler: PropTypes.func.isRequired,
+};
 
 export default ButtonPanel;
