@@ -50,16 +50,22 @@ const calculate = (data, buttonName) => {
         newData.next = null;
         newData.operation = null;
       }
-      if (newData.next === null && !newData.operation) {
-        if (!newData.total.split('').includes('.')) {
-          newData.total += '.';
+      if (!newData.next && !newData.operation) {
+        if (newData.total) {
+          if (!newData.total.split('').includes('.')) {
+            newData.total += '.';
+          }
         } else {
           newData.total = '0.';
         }
-      } else if (!newData.next.split('').includes('.')) {
-        newData.next += '.';
-      } else {
-        newData.next = '0.';
+      } else if (newData.total && newData.operation) {
+        if (newData.next) {
+          if (!newData.next.split('').includes('.')) {
+            newData.next += '.';
+          }
+        } else {
+          newData.next = '0.';
+        }
       }
       break;
 
@@ -72,7 +78,7 @@ const calculate = (data, buttonName) => {
       if (newData.operation === null) {
         newData.total = newData.total === '0' ? buttonName : (newData.total += buttonName);
       } else {
-        newData.next += buttonName;
+        newData.next = newData.next === null ? buttonName : (newData.next += buttonName);
       }
       break;
   }
