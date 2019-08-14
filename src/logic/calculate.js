@@ -8,6 +8,7 @@ const calculate = (data, buttonName) => {
         total: '',
         next: null,
         operation: null,
+        error: null,
       };
       break;
 
@@ -23,9 +24,16 @@ const calculate = (data, buttonName) => {
     case 'X':
     case '÷':
       if (newData.total && newData.next && newData.operation) {
-        newData.total = operate(newData.total, newData.next, newData.operation);
-        newData.next = null;
-        newData.operation = buttonName;
+        if (newData.operation === '÷' && newData.next === '0') {
+          newData.total = null;
+          newData.next = null;
+          newData.operation = null;
+          newData.error = 'error';
+        } else {
+          newData.total = operate(newData.total, newData.next, newData.operation);
+          newData.next = null;
+          newData.operation = buttonName;
+        }
       } else if (newData.total && newData.next === null) {
         newData.operation = buttonName;
       }
@@ -70,7 +78,7 @@ const calculate = (data, buttonName) => {
       break;
 
     default:
-      if (newData.operation === '=') {
+      if (newData.operation === '=' || newData.total === 'Not a number' || newData.error) {
         newData.total = '';
         newData.operation = null;
       }

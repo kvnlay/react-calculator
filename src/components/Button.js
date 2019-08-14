@@ -12,6 +12,7 @@ function Button(props) {
 
   const handleClick = () => clickHandler(name);
   return (
+    // eslint-disable-next-line react/button-has-type
     <button
       className={`button button-${color} ${width ? 'wide' : ''}`}
       onClick={handleClick}

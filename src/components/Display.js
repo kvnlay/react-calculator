@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default function Display(props) {
-  const { result, next } = props;
+  const { result, next, error } = props;
 
   return (
     <div className="display">
-      {next || result || '0'}
+      {next || result || error || '0'}
     </div>
   );
 }
@@ -14,4 +14,5 @@ export default function Display(props) {
 Display.propTypes = {
   result: PropTypes.string.isRequired,
   next: PropTypes.string.isRequired,
+  error: PropTypes.string.isRequired,
 };
