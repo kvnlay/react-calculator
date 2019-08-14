@@ -15,7 +15,7 @@ class App extends React.Component {
   render() {
     const { result } = this.state;
     return (
-      <div id="app">
+      <div className="container">
         <Display result={result} />
         <ButtonPanel />
       </div>
