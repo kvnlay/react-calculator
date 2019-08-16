@@ -50,7 +50,7 @@ const calculate = (data, buttonName) => {
         newData.total = operate(newData.total, newData.next, newData.operation);
         newData.next = null;
       }
-      newData.operation = null;
+      newData.operation = buttonName;
       break;
     case '.':
       if (newData.operation === '=') {
@@ -78,15 +78,22 @@ const calculate = (data, buttonName) => {
       break;
 
     default:
-      if (newData.operation === '=' || newData.total === 'Not a number' || newData.error) {
-        newData.total = '';
-        newData.operation = null;
-      }
-
-      if (newData.operation === null) {
-        newData.total = newData.total === '0' ? buttonName : (newData.total += buttonName);
+      if (data.operation) {
+        if (data.operation === '=') {
+          newData = {
+            total: buttonName,
+            next: null,
+            operation: null,
+          };
+        } else {
+          newData.next = newData.next === null || newData.next === '0'
+            ? buttonName
+            : newData.next + buttonName;
+        }
       } else {
-        newData.next = newData.next === null ? buttonName : (newData.next += buttonName);
+        newData.total = newData.total === null || newData.total === '0'
+          ? buttonName
+          : newData.total + buttonName;
       }
       break;
   }
