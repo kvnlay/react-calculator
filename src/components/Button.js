@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 
 function Button(props) {
   const {
-    color = 'gray',
-    width = false,
+    color,
+    width,
     name,
     clickHandler,
   } = props;
@@ -23,9 +23,14 @@ function Button(props) {
 }
 
 Button.propTypes = {
-  color: PropTypes.string.isRequired,
+  color: PropTypes.string,
   name: PropTypes.string.isRequired,
-  width: PropTypes.bool.isRequired,
+  width: PropTypes.bool,
   clickHandler: PropTypes.func.isRequired,
 };
+
+Button.defaultProps = {
+  color: 'gray',
+  width: false,
+}
 export default Button;

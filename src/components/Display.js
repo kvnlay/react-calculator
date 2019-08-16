@@ -12,7 +12,13 @@ export default function Display(props) {
 }
 
 Display.propTypes = {
-  result: PropTypes.string.isRequired,
-  next: PropTypes.string.isRequired,
-  error: PropTypes.string.isRequired,
+  result: PropTypes.string,
+  next: PropTypes.string,
+  error: PropTypes.string,
+};
+
+Display.defaultProps = {
+  result: '0',
+  next: null,
+  error: null,
 };
