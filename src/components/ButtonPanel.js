@@ -4,50 +4,36 @@ import Button from './Button';
 import '../App.css';
 
 function ButtonPanel({ clickHandler }) {
-  const allProps = (buttonName, color, width) => {
-    // eslint-disable-next-line no-shadow
-    const handleClick = (buttonName) => {
-      clickHandler(buttonName);
-    };
-    const props = {
-      clickHandler: handleClick,
-      name: buttonName,
-      color,
-      width,
-    };
-    return props;
-  };
-
   return (
     <div>
       <div className="row">
-        <Button {...allProps('AC')} />
-        <Button {...allProps('+/-')} />
-        <Button {...allProps('%')} />
-        <Button {...allProps('÷', 'orange')} />
+        <Button name="AC" handleClick={clickHandler} />
+        <Button name="+/-" handleClick={clickHandler} />
+        <Button name="%" handleClick={clickHandler} />
+        <Button name="÷" color="orange" handleClick={clickHandler} />
       </div>
       <div className="row">
-        <Button {...allProps('7')} />
-        <Button {...allProps('8')} />
-        <Button {...allProps('9')} />
-        <Button {...allProps('X', 'orange')} />
+        <Button name="7" handleClick={clickHandler} />
+        <Button name="8" handleClick={clickHandler} />
+        <Button name="9" handleClick={clickHandler} />
+        <Button name="X" color="orange" handleClick={clickHandler} />
       </div>
       <div className="row">
-        <Button {...allProps('4')} />
-        <Button {...allProps('5')} />
-        <Button {...allProps('6')} />
-        <Button {...allProps('-', 'orange')} />
+        <Button name="4" handleClick={clickHandler} />
+        <Button name="5" handleClick={clickHandler} />
+        <Button name="6" handleClick={clickHandler} />
+        <Button name="-" color="orange" handleClick={clickHandler} />
       </div>
       <div className="row">
-        <Button {...allProps('1')} />
-        <Button {...allProps('2')} />
-        <Button {...allProps('3')} />
-        <Button {...allProps('+', 'orange')} />
+        <Button name="1" handleClick={clickHandler} />
+        <Button name="2" handleClick={clickHandler} />
+        <Button name="3" handleClick={clickHandler} />
+        <Button name="+" color="orange" handleClick={clickHandler} />
       </div>
       <div className="row">
-        <Button {...allProps('0', undefined, true)} />
-        <Button {...allProps('.')} />
-        <Button {...allProps('=', 'orange')} />
+        <Button name="0" width handleClick={clickHandler} />
+        <Button name="." handleClick={clickHandler} />
+        <Button name="=" color="orange" handleClick={clickHandler} />
       </div>
     </div>
   );

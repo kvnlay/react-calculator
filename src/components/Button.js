@@ -7,15 +7,14 @@ function Button(props) {
     color,
     width,
     name,
-    clickHandler,
+    handleClick,
   } = props;
-
-  const handleClick = () => clickHandler(name);
+  const clickHandler = () => handleClick(name);
   return (
     // eslint-disable-next-line react/button-has-type
     <button
       className={`button button-${color} ${width ? 'wide' : ''}`}
-      onClick={handleClick}
+      onClick={clickHandler}
     >
       { name }
     </button>
@@ -26,7 +25,7 @@ Button.propTypes = {
   color: PropTypes.string,
   name: PropTypes.string.isRequired,
   width: PropTypes.bool,
-  clickHandler: PropTypes.func.isRequired,
+  handleClick: PropTypes.func.isRequired,
 };
 
 Button.defaultProps = {
