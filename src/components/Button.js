@@ -3,17 +3,33 @@ import '../App.css';
 import PropTypes from 'prop-types';
 
 function Button(props) {
-  const { color = 'gray', width = false, name } = props;
+  const {
+    color,
+    width,
+    name,
+    handleClick,
+  } = props;
+  const clickHandler = () => handleClick(name);
   return (
-    <div className={`button button-${color} ${width ? 'wide' : ''}`}>
-      <p>{ name }</p>
-    </div>
+    // eslint-disable-next-line react/button-has-type
+    <button
+      className={`button button-${color} ${width ? 'wide' : ''}`}
+      onClick={clickHandler}
+    >
+      { name }
+    </button>
   );
 }
 
 Button.propTypes = {
-  color: PropTypes.string.isRequired,
+  color: PropTypes.string,
   name: PropTypes.string.isRequired,
-  width: PropTypes.bool.isRequired,
+  width: PropTypes.bool,
+  handleClick: PropTypes.func.isRequired,
 };
+
+Button.defaultProps = {
+  color: 'gray',
+  width: false,
+}
 export default Button;
