@@ -1,6 +1,22 @@
+## Introduction
+
+> This is a calculator built with React
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### Technologies
+
+- Node.js
+- React
+- React-DOM
+- React-Create-App
+- npm
+- CSS
+- ES6
+
+> [Live Version](https://king-calc.herokuapp.com/)
+
+### Available Scripts
 
 In the project directory, you can run:
 
